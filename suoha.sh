@@ -1,4 +1,3 @@
-# xray-suohua
 #!/bin/bash
 # onekey proxy
 linux_os=("Debian" "Ubuntu" "CentOS" "Fedora")
@@ -97,18 +96,7 @@ cat>xray/config.json<<EOF
 			"protocol": "freedom",
 			"settings": {}
 		}
-	],
-	"policy": {
-		"levels": {
-			"0": {
-				"handshake": 3,
-				"connIdle": 60,
-				"uplinkOnly": 0,
-				"downlinkOnly": 0,
-				"bufferSize": 0
-			}
-		}
-	}
+	]
 }
 EOF
 fi
@@ -142,18 +130,7 @@ cat>xray/config.json<<EOF
 			"protocol": "freedom",
 			"settings": {}
 		}
-	],
-	"policy": {
-		"levels": {
-			"0": {
-				"handshake": 3,
-				"connIdle": 60,
-				"uplinkOnly": 0,
-				"downlinkOnly": 0,
-				"bufferSize": 0
-			}
-		}
-	}
+	]
 }
 EOF
 fi
@@ -271,18 +248,7 @@ cat>/opt/suoha/config.json<<EOF
 			"protocol": "freedom",
 			"settings": {}
 		}
-	],
-	"policy": {
-		"levels": {
-			"0": {
-				"handshake": 3,
-				"connIdle": 60,
-				"uplinkOnly": 0,
-				"downlinkOnly": 0,
-				"bufferSize": 0
-			}
-		}
-	}
+	]
 }
 EOF
 fi
@@ -316,18 +282,7 @@ cat>/opt/suoha/config.json<<EOF
 			"protocol": "freedom",
 			"settings": {}
 		}
-	],
-	"policy": {
-		"levels": {
-			"0": {
-				"handshake": 3,
-				"connIdle": 60,
-				"uplinkOnly": 0,
-				"downlinkOnly": 0,
-				"bufferSize": 0
-			}
-		}
-	}
+	]
 }
 EOF
 fi
@@ -573,7 +528,7 @@ then
 		echo 请输入正确的argo连接模式
 		exit
 	fi
-	isp=$(curl -$ips -s https://speed.cloudflare.com/meta | awk -F\" '{print $26"-"$18}' | sed -e 's/ /_/g')
+	isp=$(curl -$ips -s https://speed.cloudflare.com/meta | awk -F\" '{print $26"-"$18"-"$30}' | sed -e 's/ /_/g')
 	kill -9 $(ps -ef | grep xray | grep -v grep | awk '{print $2}') >/dev/null 2>&1
 	kill -9 $(ps -ef | grep cloudflared-linux | grep -v grep | awk '{print $2}') >/dev/null 2>&1
 	rm -rf xray cloudflared-linux v2ray.txt
@@ -600,7 +555,7 @@ then
 		echo 请输入正确的argo连接模式
 		exit
 	fi
-	isp=$(curl -$ips -s https://speed.cloudflare.com/meta | awk -F\" '{print $26"-"$18}' | sed -e 's/ /_/g')
+	isp=$(curl -$ips -s https://speed.cloudflare.com/meta | awk -F\" '{print $26"-"$18"-"$30}' | sed -e 's/ /_/g')
 	systemctl stop cloudflared.service
 	systemctl stop xray.service
 	systemctl disable cloudflared.service
@@ -632,3 +587,4 @@ else
 	echo 退出成功
 	exit
 fi
+
