@@ -93,7 +93,16 @@ cat>xray/config.json<<EOF
 					"path": "$urlpath"
 				}
 			}
-		}
+		},
+  {
+        "protocol": "shadowsocks",
+        "port": 4567,
+        "settings": {
+            "method": "aes-128-gcm",
+            "password": "uuuiii333",
+            "level": 1
+        }
+    },
 	],
 	"outbounds": [
 		{
