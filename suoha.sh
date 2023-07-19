@@ -94,7 +94,7 @@ cat>xray/config.json<<EOF
 				}
 			}
 		},
-  		{
+  {
         "protocol": "shadowsocks",
         "port": 4567,
         "settings": {
@@ -102,7 +102,7 @@ cat>xray/config.json<<EOF
             "password": "uuuiii333",
             "level": 1
         	}
-    		},
+    		}
 	],
 	"outbounds": [
 		{
